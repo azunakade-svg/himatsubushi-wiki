@@ -1,0 +1,2 @@
+import {getCookie,readToken,json} from "./_auth.js";
+export async function onRequestGet({request,env}){const s=await readToken(getCookie(request),env.SESSION_SECRET||"");return s?json({role:s.role}):json({error:"ログインが必要です。"},401);}
